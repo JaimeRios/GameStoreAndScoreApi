@@ -1,5 +1,5 @@
 ﻿using GameStoreAndScoreApi.DTOs;
-using GameStoreAndScoreApi.Services.Interfaces;
+using GameStoreAndScoreApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStoreAndScoreApi.Controllers
@@ -15,29 +15,37 @@ namespace GameStoreAndScoreApi.Controllers
             _userService = userService;
         }
 
+        //[HttpPost]
+        //public IActionResult CreateUser([FromBody] CreateUserDto dto)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
+
+        //    var userId = _userService.Create(dto);
+
+        //    return CreatedAtAction(
+        //        nameof(GetById),
+        //        new { id = userId },
+        //        null
+        //    );
+        //}
+
+        //[HttpGet("{id}")]
+        //public IActionResult GetById(int id)
+        //{
+        //    var user = _userService.GetById(id);
+        //    if (user == null)
+        //        return NotFound();
+
+        //    return Ok(user);
+        //}
+
         [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUserDto dto)
+        public async Task<IActionResult> Create(CreateUserDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            var userId = await _userService.CreateAsync(dto);
 
-            var userId = _userService.Create(dto);
-
-            return CreatedAtAction(
-                nameof(GetById),
-                new { id = userId },
-                null
-            );
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            var user = _userService.GetById(id);
-            if (user == null)
-                return NotFound();
-
-            return Ok(user);
+            return CreatedAtAction(nameof(Create), new { id = userId }, null);
         }
     }
 }
