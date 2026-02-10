@@ -23,17 +23,23 @@ src/
 │
 ├── Api/
 │   ├── Controllers/
+│   ├── Filters/
 │   ├── Models/
-│   ├── DTOs/
-│   ├── Services/
 │   ├── Repositories/
 │   └── Program.cs
 │
-├── Infrastructure/
-│   └── Data/
+├── Application/
+│   ├── DTOs/
+│   └── Services/
 │
-└── Domain/
-    └── Entities/
+├── Domain/
+│   ├── Entities/
+│   └── Exceptions/
+│
+└──Infrastructure/
+    ├── Persintence/
+    └── Repositories/
+
 ```
 
 ---
@@ -120,10 +126,10 @@ Authorization: Bearer {token}
 Example:
 
 | Method | Endpoint        | Description        |
-|------|-----------------|--------------------|
-| GET  | /api/users      | Get all users      |
-| POST | /api/users      | Create a user      |
-| POST | /api/auth/login | User authentication|
+|--------|-----------------|--------------------|
+| GET    | /api/User/{id}  | Get user by Id     |
+| POST   | /api/user       | Create a user      |
+| PATCH  | /api/user/{id}  | update user        |
 
 ---
 
