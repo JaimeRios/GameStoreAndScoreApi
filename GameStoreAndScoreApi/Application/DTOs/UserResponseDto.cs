@@ -1,10 +1,9 @@
-﻿namespace GameStoreAndScoreApi.Models
+﻿namespace GameStoreAndScoreApi.Application.DTOs
 {
-    public class User
+    public class UserResponseDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
         public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
     }

@@ -1,13 +1,17 @@
-using GameStoreAndScoreApi.Data;
-using GameStoreAndScoreApi.Repositories;
-using GameStoreAndScoreApi.Services;
+using GameStoreAndScoreApi.API.Filters;
+using GameStoreAndScoreApi.Application.Services;
+using GameStoreAndScoreApi.Infrastructure.Persistence;
+using GameStoreAndScoreApi.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiExceptionFilter>();
+});
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(

@@ -1,4 +1,4 @@
-﻿namespace GameStoreAndScoreApi.DTOs
+﻿namespace GameStoreAndScoreApi.Application.DTOs
 {
     public class CreateUserDto
     {

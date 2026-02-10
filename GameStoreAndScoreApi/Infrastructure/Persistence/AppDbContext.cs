@@ -1,7 +1,7 @@
-﻿using GameStoreAndScoreApi.Models;
+﻿using GameStoreAndScoreApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GameStoreAndScoreApi.Data
+namespace GameStoreAndScoreApi.Infrastructure.Persistence
 {
     public class AppDbContext : DbContext
     {
