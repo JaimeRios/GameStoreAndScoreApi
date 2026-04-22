@@ -65,5 +65,15 @@ namespace GameStoreAndScoreApi.API.Controllers
 
             return NoContent(); // 204
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> delete(int id)
+        {
+            var user = await _userService.GetByIdAsync(id);
+            if (user == null) 
+                return NotFound();
+
+            return NoContent();
+        }
     }
 }
